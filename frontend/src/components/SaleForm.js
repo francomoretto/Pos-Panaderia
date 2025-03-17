@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Typography, FormControl, InputLabel, Select, MenuItem, TextField } from '@mui/material';
+import { Container, Button, Typography, FormControl, InputLabel, Select, MenuItem, TextField, Grid } from '@mui/material';
 import axios from 'axios';
 
 const SaleForm = () => {
@@ -48,41 +48,50 @@ const SaleForm = () => {
 
   return (
     <Container>
-      <Typography variant="h5">New Sale</Typography>
+      <Typography variant="h5" align="center">New Sale</Typography>
       <form onSubmit={handleSubmit}>
-        <FormControl fullWidth margin="normal">
-          <InputLabel>Client</InputLabel>
-          <Select
-            value={selectedClient}
-            onChange={(e) => setSelectedClient(e.target.value)}
-          >
-            {clients.map(client => (
-              <MenuItem key={client._id} value={client._id}>{client.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl fullWidth margin="normal">
-          <InputLabel>Product</InputLabel>
-          <Select
-            value=""
-            onChange={(e) => handleAddProduct(products.find(p => p._id === e.target.value))}
-          >
-            {products.map(product => (
-              <MenuItem key={product._id} value={product._id}>{product.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <TextField
-          label="Quantity"
-          type="number"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <Button type="submit" variant="contained" color="primary">
-          Create Sale
-        </Button>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <InputLabel>Client</InputLabel>
+              <Select
+                value={selectedClient}
+                onChange={(e) => setSelectedClient(e.target.value)}
+              >
+                {clients.map(client => (
+                  <MenuItem key={client._id} value={client._id}>{client.name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <InputLabel>Product</InputLabel>
+              <Select
+                value=""
+                onChange={(e) => handleAddProduct(products.find(p => p._id === e.target.value))}
+              >
+                {products.map(product => (
+                  <MenuItem key={product._id} value={product._id}>{product.name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Quantity"
+              type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button type="submit" variant="contained" color="primary" fullWidth>
+              Create Sale
+            </Button>
+          </Grid>
+        </Grid>
       </form>
       <Typography variant="h6">Selected Products</Typography>
       {selectedProducts.map((sp, index) => (

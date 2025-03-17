@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Button } from '@mui/material';
+import { Container, Typography, Button, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -12,19 +12,29 @@ const Home = () => {
 
   return (
     <Container>
-      <Typography variant="h4">Home Panificadora Arroyito</Typography>
-      <Button variant="contained" color="primary" onClick={() => navigate('/clientForms')}>
-        Manage Clients
-      </Button>
-      <Button variant="contained" color="primary" onClick={() => navigate('/products')}>
-        Manage Products
-      </Button>
-      <Button variant="contained" color="primary" onClick={() => navigate('/sales')}>
-        Make a Sale
-      </Button>
-      <Button variant="contained" color="secondary" onClick={handleLogout}>
-        Logout
-      </Button>
+      <Typography variant="h4" align="center">Home Panificadora Arroyito</Typography>
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item xs={12} sm={6} md={4}>
+          <Button variant="contained" color="primary" fullWidth onClick={() => navigate('/clientForms')}>
+            Manage Clients
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Button variant="contained" color="primary" fullWidth onClick={() => navigate('/products')}>
+            Manage Products
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Button variant="contained" color="primary" fullWidth onClick={() => navigate('/sales')}>
+            Make a Sale
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Button variant="contained" color="secondary" fullWidth onClick={handleLogout}>
+            Logout
+          </Button>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

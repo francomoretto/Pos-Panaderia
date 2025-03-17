@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Container, Typography } from '@mui/material';
+import { TextField, Button, Container, Typography, Grid } from '@mui/material';
 import axios from 'axios';
 
 const ProductForm = ({ productId, onSave }) => {
@@ -35,33 +35,40 @@ const ProductForm = ({ productId, onSave }) => {
 
   return (
     <Container>
-      <Typography variant="h5">{productId ? 'Edit Product' : 'Add Product'}</Typography>
+      <Typography variant="h5" align="center">{productId ? 'Edit Product' : 'Add Product'}</Typography>
       <form onSubmit={handleSubmit}>
-        <TextField
-          label="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Price"
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <Button type="submit" variant="contained" color="primary">
-          {productId ? 'Update' : 'Add'}
-        </Button>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              label="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Price"
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button type="submit" variant="contained" color="primary" fullWidth>
+              {productId ? 'Update' : 'Add'}
+            </Button>
+          </Grid>
+        </Grid>
       </form>
     </Container>
   );
