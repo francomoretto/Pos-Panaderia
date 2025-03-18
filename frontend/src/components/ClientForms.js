@@ -81,7 +81,7 @@ const ClientForm = ({ clientId, onSave }) => {
           </Grid>
           <Grid item xs={12}>
             <Button variant="contained" color="secondary" fullWidth onClick={() => navigate(-1)}>
-              Volver Atrás
+              Back
             </Button>
           </Grid>
         </Grid>
