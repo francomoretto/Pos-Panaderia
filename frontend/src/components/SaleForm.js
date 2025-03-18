@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Button, Typography, FormControl, InputLabel, Select, MenuItem, TextField, Grid } from '@mui/material';
 import axios from 'axios';
 import API from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const SaleForm = () => {
   const [clients, setClients] = useState([]);
@@ -9,6 +10,7 @@ const SaleForm = () => {
   const [selectedClient, setSelectedClient] = useState('');
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchClientsAndProducts = async () => {
@@ -90,6 +92,11 @@ const SaleForm = () => {
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
               Create Sale
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" color="secondary" fullWidth onClick={() => navigate(-1)}>
+              Volver Atrás
             </Button>
           </Grid>
         </Grid>

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
 import API from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const ClientForm = ({ clientId, onSave }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (clientId) {
@@ -75,6 +77,11 @@ const ClientForm = ({ clientId, onSave }) => {
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
               {clientId ? 'Update' : 'Add'}
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" color="secondary" fullWidth onClick={() => navigate(-1)}>
+              Volver Atrás
             </Button>
           </Grid>
         </Grid>

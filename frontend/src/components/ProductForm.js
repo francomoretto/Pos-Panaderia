@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
 import axios from 'axios';
 import API from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const ProductForm = ({ productId, onSave }) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (productId) {
@@ -67,6 +69,11 @@ const ProductForm = ({ productId, onSave }) => {
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
               {productId ? 'Update' : 'Add'}
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" color="secondary" fullWidth onClick={() => navigate(-1)}>
+              Volver Atrás
             </Button>
           </Grid>
         </Grid>
