@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Typography, FormControl, InputLabel, Select, MenuItem, TextField, Grid } from '@mui/material';
 import axios from 'axios';
+import API from '../services/api';
 
 const SaleForm = () => {
   const [clients, setClients] = useState([]);
@@ -36,7 +37,7 @@ const SaleForm = () => {
     };
 
     try {
-      await axios.post('/api/sales', saleData);
+      await API.post('/sales', saleData);
       // Reset form after successful sale creation
       setSelectedClient('');
       setSelectedProducts([]);

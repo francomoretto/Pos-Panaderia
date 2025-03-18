@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
-import axios from 'axios';
+import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/users/register', { name, email, password });
+      const response = await API.post('/users/register', { name, email, password });
       localStorage.setItem('token', response.data.token);
       navigate('/');
     } catch (error) {

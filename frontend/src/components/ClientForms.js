@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
-import axios from 'axios';
+import API from '../services/api';
 
 const ClientForm = ({ clientId, onSave }) => {
   const [name, setName] = useState('');
@@ -10,7 +10,7 @@ const ClientForm = ({ clientId, onSave }) => {
 
   useEffect(() => {
     if (clientId) {
-      axios.get(`/api/clients/${clientId}`).then((response) => {
+      API.get(`/clients/${clientId}`).then((response) => {
         const client = response.data;
         setName(client.name);
         setEmail(client.email);
@@ -25,11 +25,11 @@ const ClientForm = ({ clientId, onSave }) => {
     const clientData = { name, email, phone, address };
     try {
       if (clientId) {
-        await axios.put(`/api/clients/${clientId}`, clientData);
+        await API.put(`/clients/${clientId}`, clientData);
       } else {
-        await axios.post('/api/clients', clientData);
+        await API.post('/clients', clientData);
       }
-      onSave();
+      onSave(clientData);
     } catch (error) {
       console.error('Error saving client:', error);
     }

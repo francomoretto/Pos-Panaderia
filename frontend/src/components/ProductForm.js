@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
 import axios from 'axios';
+import API from '../services/api';
 
 const ProductForm = ({ productId, onSave }) => {
   const [name, setName] = useState('');
@@ -23,9 +24,9 @@ const ProductForm = ({ productId, onSave }) => {
     const productData = { name, price, description };
     try {
       if (productId) {
-        await axios.put(`/api/products/${productId}`, productData);
+        await API.put(`/products/${productId}`, productData);
       } else {
-        await axios.post('/api/products', productData);
+        await API.post('/products', productData);
       }
       onSave();
     } catch (error) {
