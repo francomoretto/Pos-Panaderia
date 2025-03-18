@@ -15,8 +15,8 @@ const SaleForm = () => {
   useEffect(() => {
     const fetchClientsAndProducts = async () => {
       const [clientResponse, productResponse] = await Promise.all([
-        axios.get('/api/clients'),
-        axios.get('/api/products')
+        axios.get('http://localhost:5000/api/clients'), // Corregir URL
+        axios.get('http://localhost:5000/api/products') // Corregir URL
       ]);
 
       setClients(clientResponse.data);
