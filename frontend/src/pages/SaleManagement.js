@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SaleForm from '../components/SaleForm';
 import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material.Button'; // Corrección aquí
+import Button from '@mui/material/Button'; // Corregir aquí
 import axios from 'axios';
 
 const SaleManagement = () => {
