@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { registerUser, loginUser } = require('../controllers/userController');
 const User = require('../models/User');
 
 // Obtener todos los usuarios
@@ -26,5 +27,11 @@ router.post('/', async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 });
+
+// Registro de usuario
+router.post('/register', registerUser);
+
+// Inicio de sesión de usuario
+router.post('/login', loginUser);
 
 module.exports = router;

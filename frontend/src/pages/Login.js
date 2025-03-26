@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Snackbar, Grid } from '@mui/material';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import API from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
