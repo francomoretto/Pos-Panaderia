@@ -1,9 +1,7 @@
-axios.post("http://localhost:5000/api/clients", clientData)
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
 import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
-
 
 const ClientForm = ({ clientId, onSave }) => {
   const [name, setName] = useState('');

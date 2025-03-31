@@ -5,9 +5,11 @@ const API = axios.create({
 });
 
 API.interceptors.request.use((req) => {
-  if (localStorage.getItem('token')) {
-    req.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+  const token = localStorage.getItem('token');
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
   }
+  req.headers['Content-Type'] = 'application/json'; // Asegurar encabezado correcto
   return req;
 });
 

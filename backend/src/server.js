@@ -30,10 +30,10 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.log(err));
 
 // Rutas
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/clients', require('./routes/clientRoutes')); // Agregar esta línea
-app.use('/api/products', require('./routes/productRoutes')); // Agregar esta línea
-app.use('/api/sales', require('./routes/saleRoutes')); // Agregar esta línea
+app.use('/api/User', require('./routes/userRoutes'));
+app.use('/api/Client', require('./routes/clientRoutes')); // Agregar esta línea
+app.use('/api/Product', require('./routes/productRoutes')); // Agregar esta línea
+app.use('/api/Sale', require('./routes/saleRoutes')); // Agregar esta línea
 // Agrega más rutas aquí
 
 

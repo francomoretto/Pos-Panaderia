@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
-import { TextField, Button, Container, Typography, Grid } from '@mui/material';
+import React from 'react';
+import { Container } from '@mui/material';
 import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import RegisterForm from '../components/RegisterForms';
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleRegister = async (formData) => {
     try {
-      const response = await API.post('/users/register', { name, email, password });
+      const response = await API.post('/User/register', formData);
       localStorage.setItem('token', response.data.token);
       navigate('/');
     } catch (error) {
@@ -22,41 +19,7 @@ const Register = () => {
 
   return (
     <Container>
-      <Typography variant="h4" align="center">Register</Typography>
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              label="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="primary" fullWidth>
-              Register
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
+      <RegisterForm onSubmit={handleRegister} />
     </Container>
   );
 };

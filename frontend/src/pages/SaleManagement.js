@@ -13,7 +13,6 @@ const SaleManagement = () => {
       try {
         const [clientsResponse, productsResponse] = await Promise.all([
           axios.get('http://localhost:5000/api/clients'), // Corregir URL
-          axios.get('http://localhost:5000/api/products') // Corregir URL
         ]);
         // ...existing code...
       } catch (err) {

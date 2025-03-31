@@ -17,6 +17,11 @@ const Login = () => {
       setOpenSnackbar(true);
     } catch (error) {
       console.error('Error logging in:', error);
+      if (error.response && error.response.data && error.response.data.message) {
+        alert(`Error: ${error.response.data.message}`); // Mostrar mensaje del backend
+      } else {
+        alert('Error: Unable to login. Please try again.');
+      }
     }
   };
 
@@ -50,6 +55,16 @@ const Login = () => {
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
               Login
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              fullWidth
+              onClick={() => navigate('/register')} // Asegúrate de que esta ruta coincida con la definida en App.js
+            >
+              Register
             </Button>
           </Grid>
         </Grid>
