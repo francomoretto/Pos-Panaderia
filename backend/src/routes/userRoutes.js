@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { registerUser, loginUser } = require('../controllers/userController');
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs'); // Cambiar a bcryptjs
 
 // Obtener todos los usuarios
 router.get('/', async (req, res) => {
